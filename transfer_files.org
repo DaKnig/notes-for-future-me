@@ -1,0 +1,62 @@
+* LXC STUFF
+
+** setup:
+*** on host
+**** fedora 31
+something something cgroups1 , watch yt
+**** installation
+get lxd
+get snapd
+get lxc from snap
+lxc init
+(choose shit) (dir)
+get a centos box.
+
+*** on box
+install ssh-server
+install xauth
+**** enable X11 forwarding [Client] 
+#+BEGIN_SRC bash
+  sudo nano /etc/ssh/ssh_config
+  %% uncomment and change to yesmaintenance:
+  # ForwardX11 no --> ForwardX11 yes
+  sudo nano /etc/ssh/sshd_config
+
+  X11Forwarding yes
+  X11DisplayOffset 10
+#+END_SRC
+
+restart box
+
+
+** maintenance:
+
+__note - do all on a root terminal__
+
+*** starting
+#+BEGIN_SRC bash
+  lxc start xilinx-box
+  ssh username@ip_address -X # -X for X11
+  # this last one, do that on non-root terminal
+#+END_SRC
+
+*** copy from the box
+#+BEGIN_SRC bash
+  lxc file pull xilinx-box/absolute/path/to/source destination
+#+END_SRC
+
+*** copy to:
+#+BEGIN_SRC bash
+  lxc file push source xilinx-box/destination
+  # add -r for recursive
+#+END_SRC
+
+*** stopping
+#+BEGIN_SRC bash
+  lxc stop xilinx-box
+#+END_SRC
+
+*** list
+#+BEGIN_SRC bash
+  lxc list
+#+END_SRC
