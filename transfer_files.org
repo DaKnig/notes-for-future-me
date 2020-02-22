@@ -12,8 +12,11 @@ lxc init
 (choose shit) (dir)
 get a centos box.
 
+**** usb passthrough
+https://ubuntu.com/blog/usb-hotplug-with-lxd-containers
+change sony to Zynq (for the fpga)
 *** on box
-install ssh-server
+install openssh-server
 install xauth
 **** enable X11 forwarding [Client] 
 #+BEGIN_SRC bash
